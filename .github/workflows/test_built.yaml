@@ -25,11 +25,26 @@ jobs:
       
       - name: Lancement des tests unitaires
         run: npm run test 
+      
+      - name: Send Email
+        if: failure()
+        uses: ksatriow/action-mailer@v1
+        with:
+          smtp-server: ${{vars.SMTP_SERVER}}
+          smtp-port: ${{vars.SMTP_SERVER}}
+          from-email: ${{ secrets.FROM_EMAIL }}
+          to-email: digitalcity@yopmail.com
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: "🚀 Deployment Fail!"
+          body: "<h1>Your deployment failed successfully!<h1>"
 
       - name: Build du code TS vers le JS
         run: npm run build
 
       - name: Verifier le resultat de la build (Projet "Hello World")
         run: npm run start
+
+      
 
        
