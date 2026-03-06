@@ -10,3 +10,7 @@ jobs:
     steps: 
       - name: Verification des fichiers du runner
         run: ls -a -l 
+      - name: Clone du projet dans le runner 
+        uses: actions/checkout@v6
+      - name: Verification des fichiers apres l'action "checkout"
+        run: ls -a -l 
