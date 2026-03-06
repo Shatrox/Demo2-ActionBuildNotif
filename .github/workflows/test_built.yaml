@@ -9,8 +9,21 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - name: Verification des fichiers du runner
-        run: ls -a -l 
+        run: ls -a -l
+
       - name: Clone du projet dans le runner 
         uses: actions/checkout@v6
+
       - name: Verification des fichiers apres l'action "checkout"
-        run: ls -a -l 
+        run: ls -a -l
+      
+      - name: installation env node.js
+        uses: actions/setup-node@v6 
+      
+      - name: installation env node.js
+        run: npm ci
+      
+      - name: Lancement des tests unitaires
+        run: npm run test  
+
+       
