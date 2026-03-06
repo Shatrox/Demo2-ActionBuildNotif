@@ -31,7 +31,7 @@ jobs:
         uses: ksatriow/action-mailer@v1
         with:
           smtp-server: ${{vars.SMTP_SERVER}}
-          smtp-port: ${{vars.SMTP_SERVER}}
+          smtp-port: ${{vars.SMTP_PORT}}
           from-email: ${{ secrets.FROM_EMAIL }}
           to-email: digitalcity@yopmail.com
           username: ${{ secrets.SMTP_USERNAME }}
